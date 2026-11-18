@@ -609,6 +609,14 @@ module.exports = {
     alternate_name: null
   },
   css_prefix: true,
+  // 资源集成打包：开启后将主题本地功能资源合并为少量文件，减少请求数量
+  asset_bundle: {
+    enable: false,
+    // 是否合并 JS 资源（合并后跳过各功能的单独 JS 注入）
+    js: true,
+    // 是否合并 CSS 资源（合并后跳过各功能的单独 CSS 注入）
+    css: true
+  },
   inject: {
     head: null,
     bottom: null

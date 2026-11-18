@@ -8,10 +8,14 @@
 
 const urlFor = (hexo, str) => require('hexo-util').url_for.call(hexo, str)
 const util = require('hexo-util')
+const { bundleEnabled } = require('../common/asset-bundle')
 
 hexo.extend.filter.register('after_generate', function () {
   const config = hexo.config.wowjs || hexo.theme.config.wowjs
   if (!(config && config.enable)) return
+
+  const bundleJs = bundleEnabled(hexo, 'js')
+  const bundleCss = bundleEnabled(hexo, 'css')
 
   const animateitem = config.animateitem || []
   let animate_script = ''
@@ -48,12 +52,10 @@ hexo.extend.filter.register('after_generate', function () {
   }
   const wow_js_bottom = `<script src="${wow_init_js}"></script>`
 
-  const injector = {
-    head: [wow_css, wow_js_head].join(''),
-    bottom: [wow_script, wow_js_bottom].join('')
-  }
-  hexo.extend.injector.register('head_end', injector.head, 'default')
-  hexo.extend.injector.register('body_end', injector.bottom, 'default')
+  const headContent = [bundleCss ? '' : wow_css, bundleJs ? '' : wow_js_head].join('')
+  const bottomContent = [wow_script, bundleJs ? '' : wow_js_bottom].join('')
+  if (headContent) hexo.extend.injector.register('head_end', headContent, 'default')
+  if (bottomContent) hexo.extend.injector.register('body_end', bottomContent, 'default')
 })
 
 // wow 标签外挂

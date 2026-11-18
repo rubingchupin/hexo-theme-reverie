@@ -7,10 +7,13 @@
  */
 
 const urlFor = (hexo, str) => require('hexo-util').url_for.call(hexo, str)
+const { bundleEnabled } = require('../common/asset-bundle')
 
 hexo.extend.filter.register('after_generate', function () {
   const config = hexo.config.categoryBar || hexo.theme.config.categoryBar
   if (!(config && config.enable)) return
+
+  const bundleCss = bundleEnabled(hexo, 'css')
 
   const categories_list = hexo.locals.get('categories').data
   const categories_message = config.message
@@ -87,7 +90,7 @@ hexo.extend.filter.register('after_generate', function () {
   </script>`
 
   hexo.extend.injector.register('body_end', user_info_js, 'default')
-  hexo.extend.injector.register('head_end', css_text, 'default')
+  if (!bundleCss) hexo.extend.injector.register('head_end', css_text, 'default')
 })
 
 hexo.extend.helper.register('priority', function () {

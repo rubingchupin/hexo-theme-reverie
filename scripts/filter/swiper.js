@@ -7,6 +7,7 @@
  */
 
 const urlFor = (hexo, str) => require('hexo-util').url_for.call(hexo, str)
+const { bundleEnabled } = require('../common/asset-bundle')
 
 hexo.extend.filter.register('after_generate', function () {
   const posts_list = hexo.locals.get('posts').data
@@ -75,6 +76,9 @@ hexo.extend.filter.register('after_generate', function () {
   const css_text = `<link rel="stylesheet" href="${data.swiper_css}" media="print" onload="this.media='all'"><link rel="stylesheet" href="${data.custom_css}" media="print" onload="this.media='all'">`
   const js_text = `<script src="${data.swiper_js}"></script><script src="${data.custom_js}"></script>`
 
+  const bundleCss = bundleEnabled(hexo, 'css')
+  const bundleJs = bundleEnabled(hexo, 'js')
+
   let get_layout
   if (data.layout_type === 'class') {
     get_layout = `document.getElementsByClassName('${data.layout_name}')[${data.layout_index}]`
@@ -106,6 +110,6 @@ hexo.extend.filter.register('after_generate', function () {
     hexo.extend.injector.register('body_end', mount_js, 'default')
   }
 
-  hexo.extend.injector.register('head_end', css_text, 'default')
-  hexo.extend.injector.register('body_end', js_text, 'default')
+  if (!bundleCss) hexo.extend.injector.register('head_end', css_text, 'default')
+  if (!bundleJs) hexo.extend.injector.register('body_end', js_text, 'default')
 })

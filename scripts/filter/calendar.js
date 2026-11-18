@@ -8,10 +8,13 @@
  */
 
 const urlFor = (hexo, str) => require('hexo-util').url_for.call(hexo, str)
+const { bundleEnabled } = require('../common/asset-bundle')
 
 hexo.extend.filter.register('after_generate', function () {
   const cardCalendar = hexo.theme.config.aside && hexo.theme.config.aside.card_calendar
   if (!cardCalendar || !cardCalendar.enable) return
+
+  if (bundleEnabled(hexo, 'js')) return
 
   const jquery_js = cardCalendar.jquery_js ? urlFor(hexo, cardCalendar.jquery_js) : '/js/jquery.min.js'
   const languages_js = cardCalendar.languages_js ? urlFor(hexo, cardCalendar.languages_js) : '/js/languages.js'

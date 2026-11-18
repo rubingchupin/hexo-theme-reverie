@@ -8,10 +8,13 @@
  */
 
 const urlFor = (hexo, str) => require('hexo-util').url_for.call(hexo, str)
+const { bundleEnabled } = require('../common/asset-bundle')
 
 hexo.extend.filter.register('after_generate', function () {
   const config = hexo.theme.config.nav
   if (!config || !config.scroll_show_title) return
+
+  if (bundleEnabled(hexo, 'js')) return
 
   const js = config.nav_js ? urlFor(hexo, config.nav_js) : '/js/nav.js'
 

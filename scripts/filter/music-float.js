@@ -8,10 +8,13 @@
  */
 
 const urlFor = (hexo, str) => require('hexo-util').url_for.call(hexo, str)
+const { bundleEnabled } = require('../common/asset-bundle')
 
 hexo.extend.filter.register('after_generate', function () {
   const config = hexo.theme.config.music_float
   if (!config || !config.enable) return
+
+  if (bundleEnabled(hexo, 'js')) return
 
   const js = config.js ? urlFor(hexo, config.js) : '/js/music_float.js'
 

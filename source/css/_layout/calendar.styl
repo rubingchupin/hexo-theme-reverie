@@ -1,0 +1,167 @@
+#calendar
+  a
+    text-decoration none
+
+  // ===== 日历头部 =====
+  .cal-head
+    display flex
+    align-items center
+    justify-content space-between
+    padding 8px 4px 6px
+    position relative
+
+  .cal-prev,
+  .cal-next
+    display flex
+    align-items center
+    justify-content center
+    width 28px
+    height 28px
+    border 1px solid var(--light-grey)
+    border-radius 6px
+    color var(--font-color)
+    cursor pointer
+    transition all .2s
+    outline 0
+    background transparent
+
+    &:hover
+      background $theme-color
+      border-color $theme-color
+      color #fff
+
+    &:before
+      content ''
+      display block
+      width 0
+      height 0
+      border-top 5px solid transparent
+      border-bottom 5px solid transparent
+
+  .cal-prev
+    &:before
+      border-right 8px solid currentColor
+
+  .cal-next
+    &:before
+      border-left 8px solid currentColor
+
+  .cal-title
+    font bold 14px/1.4
+    text-align center
+    color var(--font-color)
+    min-width 120px
+
+    a
+      color $theme-color
+      border-bottom 1px dashed transparent
+      transition all .2s
+
+      &:hover
+        border-bottom-color $theme-color
+
+  // ===== 日历表格 =====
+  .cal
+    width 100%
+    margin 0
+    border-collapse collapse
+    table-layout fixed
+    border 1px solid var(--light-grey)
+    border-radius 6px
+    overflow hidden
+
+  .cal th,
+  .cal td
+    border 1px solid var(--light-grey)
+    font-weight normal
+    text-align center
+    vertical-align middle
+
+  .cal th
+    background $theme-color
+    color #fff
+    font-size .75em
+    font-weight 600
+    padding 4px 0
+    line-height 2
+
+  .cal td
+    padding 2px 0
+    font-size .78em
+    line-height 2.2
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+    color var(--font-color)
+
+  // ===== 今日标记 =====
+  tbody
+    .cal-today
+      background alpha($theme-color, 15%)
+      color $theme-color
+      font-weight 700
+      position relative
+
+      &::after
+        content ''
+        position absolute
+        bottom 2px
+        left 50%
+        transform translateX(-50%)
+        width 4px
+        height 4px
+        border-radius 50%
+        background $theme-color
+
+  // ===== 有文章日期 =====
+  tbody
+    a
+      display block
+      width 100%
+      height 100%
+      background transparent
+      color $theme-color
+      font-weight 600
+      border-radius 4px
+      transition all .2s
+      overflow hidden
+      text-overflow ellipsis
+      white-space nowrap
+
+      &:hover
+        background $theme-color
+        color #fff
+
+  // ===== 非本月日期 =====
+  .cal-gray
+    color var(--card-meta) !important
+    opacity .45
+
+  // ===== 底部导航 =====
+  tfoot
+    .cal-foot
+      color $theme-color
+      font-size .78em
+      padding 4px 2px
+      cursor pointer
+      transition all .2s
+      border-radius 4px
+
+      &:hover
+        background alpha($theme-color, 12%)
+        color $theme-color
+
+  // ===== 深色模式 =====
+  [data-theme='dark'] &
+    .cal-prev,
+    .cal-next
+      color var(--font-color)
+
+    .cal,
+    .cal th,
+    .cal td
+      border-color var(--light-grey)
+
+    tbody
+      .cal-today
+        background alpha($theme-color, 20%)

@@ -1,0 +1,19 @@
+# 主题核心仓库：排除站点内容 / 私有数据 / 非核心文件
+
+# 站点专属内容（音频、页面等）
+source/music/
+source/rubing_world/
+
+# 私有歌单数据（依赖本地音频，不属于主题通用能力）
+source/json/
+
+# 站点 Pages 域名配置（属于站点部署，不属于主题）
+source/CNAME
+
+# 未知哈希文件（临时/测试）
+source/495019cd0768f3a40944a4309c1c27b7.txt
+
+# 系统与编辑文件
+.DS_Store
+Thumbs.db
+*.log

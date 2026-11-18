@@ -35,8 +35,7 @@ script.
       setTimeout(preloader.endLoading, 7000)
     }
 
-    if (!{theme.pjax && theme.pjax.enable}) {
-      btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
-      btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
-    }
+    // btf.addGlobalFn 内部已根据 pjax.enable 自动决定是否注册，无需在此重复判断
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
   })()

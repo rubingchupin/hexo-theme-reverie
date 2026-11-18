@@ -10,7 +10,7 @@ source/json/
 # 站点 Pages 域名配置（属于站点部署，不属于主题）
 source/CNAME
 
-# 未知哈希文件（临时/测试）
+# 哈希文件（站长验证）
 source/495019cd0768f3a40944a4309c1c27b7.txt
 
 # 系统与编辑文件

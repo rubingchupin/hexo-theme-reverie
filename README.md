@@ -129,6 +129,15 @@ This project is licensed under the [Apache 2.0](LICENSE) License.
 
 This theme is a fork of [hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly). Thanks to the original author Jerry for the excellent work!
 
+The following features' logic layers have been embedded into the theme core (dependencies are managed via CDN or local assets):
+
+- **Homepage Swiper Carousel** — adapted from [hexo-butterfly-swiper](https://github.com/Akilarlxh/hexo-butterfly-swiper) by [Akilarlxh](https://github.com/Akilarlxh)
+- **Scroll Animation (Wow.js)** — adapted from [hexo-butterfly-wowjs](https://github.com/Akilarlxh/hexo-butterfly-wowjs) by [Akilarlxh](https://github.com/Akilarlxh)
+- **Category Cards** — adapted from [hexo-butterfly-categories-card](https://github.com/Akilarlxh/hexo-butterfly-categories-card) by [Akilarlxh](https://github.com/Akilarlxh)
+- **Local Asset Assembler** — adapted from [hexo-butterfly-extjs](https://github.com/Akilarlxh/hexo-butterfly-extjs) by [Akilarlxh](https://github.com/Akilarlxh)
+
+Special thanks to all the upstream authors for their excellent work!
+
 ---
 
 <div align="center">

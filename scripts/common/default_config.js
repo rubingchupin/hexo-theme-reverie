@@ -6,6 +6,8 @@ module.exports = {
     logo: null,
     display_title: true,
     display_post_title: true,
+    // 滚动时在导航栏中间显示文章标题
+    scroll_show_title: true,
     fixed: false
   },
   menu: null,
@@ -204,6 +206,9 @@ module.exports = {
       last_push_date: true,
       sort_order: null,
       runtime_date: null
+    },
+    card_calendar: {
+      enable: false
     }
   },
   rightside_bottom: null,
@@ -467,7 +472,9 @@ module.exports = {
     global_font_size: null,
     code_font_size: null,
     font_family: null,
-    code_font_family: null
+    code_font_family: null,
+    // 需要预加载的字体文件 URL 列表（自动生成 <link rel="preload">）
+    preload: null
   },
   blog_title_font: {
     font_link: null,
@@ -571,6 +578,11 @@ module.exports = {
     position: 'bottom-left',
     bg_light: '#49b1f5',
     bg_dark: '#1f1f1f'
+  },
+  music_float: {
+    enable: false,
+    // 自定义播放器脚本路径（默认使用主题本地 /js/music_float.js）
+    js: null
   },
   instantpage: false,
   lazyload: {

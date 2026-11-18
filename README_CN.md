@@ -129,6 +129,15 @@ npm install hexo-renderer-pug hexo-renderer-stylus --save
 
 本主题是 [hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly) 的 fork，感谢原作者 Jerry 的优秀作品！
 
+以下功能已将其逻辑层嵌入主题核心代码（资源由 CDN 或本地统一管理）：
+
+- **首页轮播** — 改编自 [hexo-butterfly-swiper](https://github.com/Akilarlxh/hexo-butterfly-swiper)，作者 [Akilarlxh](https://github.com/Akilarlxh)
+- **滚动动画（Wow.js）** — 改编自 [hexo-butterfly-wowjs](https://github.com/Akilarlxh/hexo-butterfly-wowjs)，作者 [Akilarlxh](https://github.com/Akilarlxh)
+- **分类卡片** — 改编自 [hexo-butterfly-categories-card](https://github.com/Akilarlxh/hexo-butterfly-categories-card)，作者 [Akilarlxh](https://github.com/Akilarlxh)
+- **本地资源装配** — 改编自 [hexo-butterfly-extjs](https://github.com/Akilarlxh/hexo-butterfly-extjs)，作者 [Akilarlxh](https://github.com/Akilarlxh)
+
+再次感谢所有上游作者提供的优秀作品！
+
 ---
 
 <div align="center">
